@@ -10,11 +10,11 @@ Some Username and Passwords to test the site:
 
 
 Admin:
-UN: Mark
+UN: mark
 PW: secret
 
 Instructor:
-UN: Sarah
+UN: sarah
 PW: secret
 
 Parent:
