@@ -8,13 +8,14 @@ After running these series of commands, run `rails s` to begin the server. The s
 
 Some Username and Passwords to test the site:
 
+
 Admin:
 UN: Mark
 PW: secret
 
-Instructor
+Instructor:
 UN: Sarah
 PW: secret
 
-Parent
+Parent:
 UN and PW can be created from the site
