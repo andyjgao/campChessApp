@@ -1,0 +1,42 @@
+<div class="card with-cards">
+  <div class="card-content">
+
+    <span class="card-title">
+      <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
+    </span>
+
+    <p><%= @camp.curriculum.description %></p>
+
+    <h5>Basic Information</h5>
+    <p>
+      <% if current_user.nil? %>
+      <strong>Location Address</strong></br>
+      <%= @camp.location.street_1 %><br />
+      <% if !@camp.location.street_2.nil? %>
+        <%= @camp.location.street_2 %><br/>
+      <% end %>
+      <%= @camp.location.city %>, <%= @camp.location.state %> <%= @camp.location.zip %>
+      <br/>
+      <br>
+    <% end %>
+    </p>
+    <p><strong>Dates: </strong><%= @camp.start_date.strftime("%m/%d/%y") %> - <%= @camp.end_date.strftime("%m/%d/%y") %></p>
+    <p><strong>Time of Day: </strong><%= @camp.time_slot == "am" ? "Morning" : "Afternoon" %></p>
+    <p><strong>Chess Levels: </strong><%= @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %></p>
+    <p><strong>Max Enrollment: </strong><%= @camp.max_students %></p>
+    <p><strong>Active: </strong><%= @camp.active ? "Yes" : "No" %></p>
+    <p><strong>Camp: </strong>$<%= @camp.cost %>0</p>
+    <p><strong>Slots Remaining: </strong><%= @camp.max_students - @camp.registrations.count %></p>
+  </div>
+
+
+
+  <div class="card-action">
+    <% if can? :edit, Camp %>
+      <%= link_to 'Edit', edit_camp_path(@camp), :class=>"btn waves-effect waves-light blue" %>
+    <% end %>
+
+
+    <%= link_to 'Back', camps_path, :class=>"btn waves-effect waves-light blue" %>
+  </div>
+</div>

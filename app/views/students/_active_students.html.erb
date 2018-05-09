@@ -1,0 +1,33 @@
+<h3>Active Students</h3>
+
+<table class="table">
+  <tr>
+    <th width="240">Name</th>
+    <th width="100">Rating</th>
+    <th width="100">Age</th>
+    <% if can? :edit, Student %>
+      <th></th>
+    <% end %>
+  </tr>
+
+<% @all_students.each do |student| %>
+  <tr>
+    <td><%= link_to student.name, student_path(student) %></td>
+    <td>
+    <% if student.rating < 100 %>
+        <%= "Unrated"%><br /><br />
+      <% else %>
+        <%= student.rating %><br /><br />
+      <% end %>
+    </td>
+    <td><%= student.age %></td>
+    <% if can? :edit, Student %>  
+      <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @active_students, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

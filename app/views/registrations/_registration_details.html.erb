@@ -1,0 +1,19 @@
+<h3>Registration Details</h3><br />
+
+<strong>Student Name&nbsp;&nbsp;</strong> 
+  <%= @registration.student.name %><br /><br />
+
+<strong>Family Name&nbsp;&nbsp;</strong> 
+  <%= @registration.student.family.family_name %><br /><br />
+
+<strong>Payment Status&nbsp;&nbsp;</strong> 
+  <%= @registration.payment_status %><br /><br />
+
+<strong>Points Earned&nbsp;&nbsp;</strong> 
+  <%= @registration.points_earned %><br /><br />
+
+
+<%= link_to "Edit this Registration", edit_registration_path(@registration), class: "button tiny radius" %>
+<%= link_to "Add a new family", new_family_path, class: "button tiny radius" %>
+<td> <%= link_to 'Delete registration', registration_path(@registration), data: { confirm: 'Are you sure you want to permanently remove this registration from the system?' }, method: :delete, class: "button tiny radius alert" %> </td>
+<%= link_to "Back to families", family_path, class: "button tiny radius" %>

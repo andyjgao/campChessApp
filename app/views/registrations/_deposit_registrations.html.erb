@@ -1,0 +1,25 @@
+<h3>Deposit Registrations</h3>
+
+<table class="table">
+  <tr>
+    <th width="200">Student Name</th>
+    <th width="200">Payment Status</th>
+    <% if can? :edit, Registration %>
+    <th></th>
+    <% end %>
+  </tr>
+
+<% @deposit_registrations.each do |registration| %>
+  <tr>
+    <td><%= link_to registration.student.name, student_path(registration.student) %></td>
+    <td align="center"><%= registration.payment_status %></td>
+    <% if can? :edit, Registration %>
+      <td><%= link_to 'Edit', edit_registration_path(registration), class: "button tiny radius" %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @full_registrations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

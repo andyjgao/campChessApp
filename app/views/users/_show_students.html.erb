@@ -1,0 +1,41 @@
+
+<div >
+  <%= hidden_field_tag "family_id", current_user.family.id %>
+  <div class="card with-cards">
+    <div class="card-content">
+      <% if current_user.family.students.empty? %>
+        <p>No students at this time</p>
+      <% else %>
+        <span class="card-title">Students (<%= current_user.family.students.size %>)</span>
+        <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Parent</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% current_user.family.students.each do |s| %>
+          <tr >
+
+            <td><%= link_to s.proper_name, student_path(s) %></td>
+            <td><%= s.family.parent_first_name %></td>
+            <td><%= s.family.phone %> </td>
+          </tr>
+
+        <% end %>
+        </tbody>
+        </table>
+
+
+      <% end %>
+
+
+    </div>
+  </div>
+
+
+
+</div>  <!-- End of div#assignments -->

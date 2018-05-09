@@ -1,0 +1,107 @@
+<div class="col s6">
+    <div class="card horizontal">
+        <div class="card-content">
+           <span class="card-title"># of Registrations per Curriculum<br /><br /></span>
+           <canvas id="myChart1" width="400" height="300"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="col s6">
+    <div class="card horizontal">
+        <div class="card-content">
+           <span class="card-title">Top 10 Camps with the Most Students<br /><br /></span>
+           <canvas id="myChart2" width="400" height="300"></canvas>
+        </div>
+    </div>
+</div>
+
+      <script>
+
+      var ctx = document.getElementById("myChart1").getContext('2d');
+      var myChart1 = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+              labels: <%= raw @curric%>,
+              datasets: [{
+                  label: '# of Votes',
+                  // data: [12, 19, 3, 5, 2],
+                   data: <%= @reg_count%>,
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.8)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+
+      });
+
+
+      var ctx2 = document.getElementById("myChart2").getContext('2d');
+      var myChart2 = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+              labels: <%= raw @campps%>,
+              //labels: <%= @derp%>,
+              // labels: <%= @derp %>,
+              datasets: [{
+                  label: 'Number of Students per Camp',
+                  // data: [12, 19, 3, 5, 2],
+                  data: <%= @campstds%>,
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.8)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 99, 132, 0.8)',
+                      'rgba(54, 162, 235, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)',
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+            title: {
+                display: false,
+                text: 'Chart.js bar Chart'
+            },
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                        beginAtZero: true,
+                        callback: function (value) { if (Number.isInteger(value)) { return value; } },
+                        stepSize: 1
+                    }
+                  }]
+              }
+          }
+      });
+      </script>

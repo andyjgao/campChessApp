@@ -1,0 +1,56 @@
+<nav id="nav">
+  <div class="container">
+
+    <ul class="left hide-on-med-and-down">
+      <li><%= link_to(image_tag('logo.png',:class => 'img_50px'), home_path) %></li>
+
+      <% if current_user.role? :admin %>
+        <li><%= link_to 'Camps', camps_path %></li>
+        <li><%= link_to 'Curriculums', curriculums_path %></li>
+        <li><%= link_to 'Instructors', instructors_path %></li>
+        <li><%= link_to 'Locations', locations_path %></li>
+
+
+      <% elsif current_user.role? :instructor %>
+        <li><%= link_to 'Camps', camps_path %></li>
+        <li><%= link_to 'Curriculums', curriculums_path %></li>
+        <li><%= link_to 'Locations', locations_path %></li>
+        <li><%= link_to 'Students', students_path %></li>
+      <% else %>
+        <li><%= link_to 'Camps', camps_path %></li>
+        <li><%= link_to 'Curriculums', curriculums_path %></li>
+        <li><%= link_to 'Locations', locations_path %></li>
+        <li><%= link_to 'Students', students_path %></li>
+
+      <% end %>
+    </ul>
+
+    <ul class="right">
+
+        <% if logged_in? and current_user.role?(:parent) %>
+          <li>
+            <%= link_to view_cart_path do %>
+              <i class="small material-icons prefix left">add_shopping_cart</i> My Cart&nbsp;&nbsp;
+              <% if session[:cart].size > 0 %>
+                <span class="new badge" data-badge-caption=""><%= session[:cart].size %></span>
+              <% end %>
+            <%end %>
+          </li>
+        <% end %>
+
+        <% if !current_user.nil? %>
+          <li><%= link_to "My Account", user_path(current_user) %></li>
+        <% end %>
+        <li>
+          <% if logged_in? %>
+            <%= link_to 'Logout', logout_path %>
+
+          <% else %>
+            <%= link_to 'Login', login_path %>
+          <% end %>
+        </li>
+      </ul>
+
+
+  </div>
+</nav>

@@ -1,0 +1,70 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<% if @active_camps.empty? %>
+  <h3>There are no camps in the system at this time</h3>
+<% else %>
+  <h3>Active Camps</h3>
+
+    <% @active_camps.active.each do |camp| %>
+
+    <div class="card horizontal">
+    <div class="card-image">
+      <%= image_tag('img_not_available.png', border:0, size:"200x150")%>
+    </div>
+
+    <div class="card-stacked">
+      <div class="card-content">
+        <h5 class="heading">
+          <div class="link text big">
+          <%= link_to camp.curriculum.name, camp %>
+          </div>
+        </h5>
+        <p class="text">
+          Start Date: <%= camp.start_date.strftime("%m/%d/%y") %>
+          <%= camp.time_slot == "am" ? "Morning" : "Afternoon" %>
+        </p>
+
+        <h5 class="heading">
+          <%= camp.cost.nil? ? "N/A" : number_to_currency(camp.cost) %>
+        </h5>
+
+
+
+        <p class="text">
+          Max Students: <%= camp.max_students %>
+          Open Slots: <%= camp.max_students - camp.registrations.count %>
+        </p>
+
+
+      </div>
+
+
+    </div>
+
+    <div class="card-action">
+
+
+        <% if can? :create, Camp %>
+
+          <%= link_to 'Edit', edit_camp_path(camp), class: 'button tiny radius' %>
+        <% end %>
+
+      </div>
+
+  </div>
+
+
+
+
+
+
+
+<% end %>
+
+
+
+
+<% end %>
+
+<span class="paginate">
+  <%= will_paginate @active_camps, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next", :param_name => 'active_camps' %>
+</span>

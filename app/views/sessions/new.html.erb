@@ -1,0 +1,45 @@
+<div class = "container with-cards">
+<!-- <div class="row">
+  <div class="col s10">
+    <div class="card loginCard">
+      <div class="card-content">
+        <span class="card-title" style = "color: white">Login here</span> -->
+
+      <div id="login-page" class="row">
+        <div class="col s12 z-depth-6 card-panel">
+          <br />
+          <div class="row">
+            <%= form_with url: sessions_path, local: true do |f| %>
+            <div class="input-field col s12">
+            <i class="material-icons prefix">perm_identity</i>
+                <%= f.label :username %>
+                <%= f.text_field :username %>
+            </div>
+          </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock_outline</i>
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <a href="#"class="btn waves-effect waves-light col s12"><%= f.submit "Log In" %></a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a href="#"><%= link_to "Sign Up", new_user_path %> </a></p>
+          </div>
+
+        </div>
+        <% end %>
+      </div>
+    </div>
+      <!-- </div>
+    </div>
+  </div>
+</div> -->
+</div>

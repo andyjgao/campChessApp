@@ -1,0 +1,65 @@
+
+<div class = "row with-cards">
+    <h3>Sign Up</h3>
+    <br>
+    <br>
+    <h4>User Info</h4>
+      <div class = "row">
+        <%= form_for @user do |f| %>
+         <div class = "input-field col s6">
+            <i class = "material-icons prefix">account_circle</i>
+            <%= f.label :username %>
+            <%= f.text_field :username %>
+         </div>
+
+         <div class = "input-field col s6">
+           <i class = "material-icons prefix">mail</i>
+
+           <%= f.label :email %>
+           <%= f.text_field :email %>
+         </div>
+      </div>
+
+      <div class = "row">
+        <div class = "input-field col s6">
+        <i class = "material-icons prefix">lock</i>
+           <%= f.label :password %>
+           <%= f.text_field :password %>
+        </div>
+
+        <div class = "input-field col s6">
+          <%= f.label :password_confirmation %>
+          <%= f.text_field :password_confirmation %>
+        </div>
+      </div>
+
+      <div class = "row">
+         <div class = "input-field col s6">
+           <i class = "material-icons prefix">phone</i>
+
+           <%= f.label :phone %>
+           <%= f.text_field :phone %>
+         </div>
+      </div>
+
+      <h4>Family Info</h4>
+      <div class = "row">
+        <div class = "input-field col s6">
+
+           <%= f.label :family_name %>
+           <%= f.text_field :family_name %>
+        </div>
+
+        <div class = "input-field col s6">
+          <%= f.label :parent_first_name %>
+          <%= f.text_field :parent_first_name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <a href="#"class="btn waves-effect waves-light col s12"><%= f.submit "Create User" %></a>
+        </div>
+      </div>
+      <% end %>
+   </form>
+</div>

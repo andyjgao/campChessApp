@@ -1,0 +1,50 @@
+
+<div >
+  <%= hidden_field_tag "camp_id", @camp.id %>
+  <div class="card">
+    <div class="card-content">
+      <% if @registrations.empty? %>
+        <p>No registrations at this time</p>
+      <% else %>
+        <span class="card-title">Registrations (<%= @registrations.size %>)</span>
+        <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Parent</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @registrations.each do |registration| %>
+          <tr >  
+            
+            <td><%= link_to registration.proper_name, student_path(registration) %></td>
+            <td><%= link_to registration.family.parent_first_name, family_path(registration.family) %></td>
+            <td><%= registration.family.phone %> </td>
+          </tr>
+
+        <% end %>
+        </tbody>
+        </table>
+          
+
+      <% end %>
+
+      
+    </div>
+  </div>
+
+  
+
+</div>  <!-- End of div#assignments -->
+
+
+
+
+<!--  much easier to include this complicated template here 
+      rather than in the js file (IMO) -->
+<script type="text/x-template" id="camp-instructor-form-template">
+  <%= render "camp_instructor_form_template" %>
+</script>

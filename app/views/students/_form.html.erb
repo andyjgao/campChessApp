@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col s9">
+    <div class="card">
+      <div class="card-content">
+
+
+
+<%= simple_form_for(@student) do |f| %>
+
+   <h3><%= controller.action_name.capitalize %> Student</h3>
+
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <% if current_user.role == "admin" %>
+      <%= f.input :family_id, collection: Family.active.alphabetical, label_method: :family_name, include_blank: true %>
+    <% elsif current_user.role == "parent" %>
+
+      <%= f.input :family_id, as: :hidden, input_html: { value: @current_user.family.id } %>
+    <% end %>
+
+    <%= f.input :date_of_birth, label: "Date of Birth", label_html: { class: 'active'} %>
+    <%= f.input :rating %>
+    <% if current_user.role == "admin" %>
+      <%= f.input :active %>
+    <% elsif current_user.role == "parent" %>
+      <%= f.input :active, as: :hidden, input_html: { value: true } %>
+    <% end %>
+    <div class="row">
+
+    <div class="form-actions col s8">
+      <%= f.button :submit %>
+    </div>
+
+
+<% end %>
+
+  </div>
+</div>
+<%= link_to 'Back', :back %>

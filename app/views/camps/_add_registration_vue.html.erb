@@ -1,0 +1,70 @@
+<div id="reg_students">
+  <%= hidden_field_tag "camp_id", @camp.id %>
+  <% if logged_in? and !current_user.role?(:instructor) %>
+  <div class="card">
+    <div class="card-content">
+
+      <span class="card-title">Register Student</span>
+
+
+        <div class="card-action">
+        <%# link_to "Add a new student", "#" %>
+
+        <%= link_to "Register", "#", {%s(v-on:click) => "switch_modal()"} %>
+        </div>
+
+    </div>
+  </div>
+
+  <div v-if="modal_open">
+    <new-student-form></new-student-form>
+  </div>
+
+
+</div>  <!-- End of div#assignments -->
+
+
+
+
+<!--  much easier to include this complicated template here
+      rather than in the js file (IMO) -->
+
+<script type="text/x-template" id="register-students-form-template">
+  <%= render "register_students_form_template" %>
+</script>
+<% end %>
+<% if logged_in? and !current_user.role?(:parent) %>
+<div class="card">
+  <div class="card-content ">
+
+    <% if @camp.students.empty? %>
+      <p>No students at this time</p>
+    <% else %>
+      <span class="card-title">Students(<%= @camp.students.size %>)</span>
+      <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Family Name</th>
+          <th>Rating</th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @camp.students.each do |s| %>
+        <tr >
+
+          <td><%= link_to s.proper_name, student_path(s) %></td>
+          <td><%= link_to s.family.family_name, family_path(s.family) %></td>
+          <td><%= s.rating%></td>
+        </tr>
+
+      <% end %>
+      </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<%end%>

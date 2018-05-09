@@ -1,0 +1,14 @@
+<%= f.input :username, label_html: { class: 'active' } %>
+<%= f.input :password, label_html: { class: 'active' } %>
+<%= f.input :password_confirmation, label_html: { class: 'active' } %>
+<%= f.input :phone, label_html: { class: 'active' } %>
+<%= f.input :email, label_html: { class: 'active' } %>
+
+<% if !logged_in? %>
+    <%= f.input :active, as: :hidden, input_html: { value: true } %>
+    <%= f.input :role, as: :hidden, input_html: { value: "parent" } %>
+<% else %>
+    <%= f.input :active %>
+<% end %>
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>A&M Chess Camp :: <%= controller.controller_name.capitalize %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+
+
+    <%= render :partial => "partials/nav" %>
+<body>
+
+</div>
+
+  <main style="background-color: rgba(255, 255, 255, 0.33); flex: 1 0 auto">
+
+    <div class="container">
+      <div class="content">
+        <div class="row">
+          <div class="container" id="main_content">
+            <%= render :partial => "partials/flash" %>
+            <br></br>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+    <footer>
+      <div class="center-align" id="footer">
+        <%= render partial: 'partials/footer' %>
+      </div>
+    </footer>
+    <%# javascript_include_tag "application" %>
+  </body>
+</html>

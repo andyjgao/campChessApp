@@ -1,0 +1,60 @@
+<h4 class="heading"><%=@category%></h4>
+
+<br/>
+<div class="col s12">
+<% @camps.each do |camp| %> 
+
+	<div class="card horizontal">
+		<div class="card-image">
+			<%# image_tag('img_not_available.png', border:0, size:"150x150")%>
+		</div>
+
+		<div class="card-stacked">
+			<div class="card-content">
+				<h5 class="heading"> 
+					<div class="link text big">
+					<%= link_to camp.name, camp_path(camp) %>
+					</div>
+				</h5>
+
+				<h5 class="heading">
+					<%= camp.price.nil? ? "N/A" : number_to_currency(camp.price) %>
+				</h5>
+
+				<p class="text">
+					Get it on or before <%# 4.days.from_now.strftime("%m/%d/%y") %> <br/>
+					<% if logged_in? && current_user.role != "parent" %>
+            			Inventory level: <%= camp.inventory_level %>
+            		<% end %>
+				</p>
+			</div>
+
+			<div class="card-action">
+
+				<% if logged_in? %> 
+
+					<%= link_to("Add to Cart", add_to_cart_path(camp.id)) %>
+
+				<% else %> 
+			
+					<%= link_to("Add to Cart", login_path) %>
+
+				<% end %>
+				
+			</div>
+		</div>
+
+	</div>
+
+
+<br/>
+
+<% end %>
+
+<span class="smtext text">
+    <%= will_paginate @camps, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+  </span>
+  
+</div>
+
+

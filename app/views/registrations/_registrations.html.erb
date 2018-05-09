@@ -1,0 +1,23 @@
+<h3>Registrations</h3>
+
+<table class="table">
+  <tr>
+    <th width="200">Student Name</th>
+    <th width="200">Payment Status</th>
+    <th></th>
+  </tr>
+
+<% @active_families.each do |family| %>
+  <tr>
+    <td><%= link_to family.family_name, family_path(family) %></td>
+    <td><%= family.parent_first_name %></td>
+    <td align="center"><%= number_to_phone family.phone %></td>
+    <td align="center"><%= family.students.size %></td>
+    <td><%= link_to 'Edit', edit_registration_path(family), class: "button tiny radius" %></td>
+  </tr>
+<% end %>
+</table>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @active_families, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

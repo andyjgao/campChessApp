@@ -1,0 +1,43 @@
+<div id="form-template">
+
+
+
+
+  <!-- create an empty camp student object to work with -->
+  <% @registration = Registration.new%>
+  <!-- now the form template itself -->
+  <div class="row">
+    <div class="col" style="background-color: #ffffffad">
+      <h5>Register for:</h5>
+      <%= simple_form_for(@registration) do |f| %>
+        <%= f.error_notification %>
+        <div class="row">
+          <div class="form-inputs">
+            <% if current_user.role?(:parent) %>
+            <%= f.input :student_id,
+
+            collection: current_user.family.students.active.alphabetical.select {|s| (!@camp.students.include? s)&& (s.rating >= @camp.curriculum.min_rating) &&(s.rating <= @camp.curriculum.max_rating)}.to_a,
+
+
+            include_blank: true %>
+            <%else%>
+            <%= f.input :student_id,
+
+            collection: Student.active.alphabetical.select {|s| (!@camp.students.include? s)&& (s.rating >= @camp.curriculum.min_rating) &&(s.rating <= @camp.curriculum.max_rating)}.to_a,
+
+
+            include_blank: true %>
+            <%end%>
+            <%= f.input :camp_id, as: :hidden, input_html: { value: @camp.id } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-actions col s8">
+            <%= f.button :submit%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

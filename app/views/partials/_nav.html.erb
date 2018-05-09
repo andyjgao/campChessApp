@@ -1,0 +1,5 @@
+<% if logged_in? %>
+  <%= render :partial => "partials/user_nav" %>
+<% else %>
+  <%= render :partial => "partials/guest_nav" %>
+<% end %>

@@ -1,0 +1,26 @@
+<h3>Family Details</h3>
+
+<strong>Family Username:&nbsp;&nbsp;</strong> 
+  <%= @family.username %><br /><br />
+  
+<strong>Family Name:&nbsp;&nbsp;</strong> 
+  <%= @family.family_name %><br /><br />
+
+<strong>Parent First Name:&nbsp;&nbsp;</strong> 
+  <%= @family.parent_first_name %><br /><br />
+
+
+
+<strong>Phone:&nbsp;&nbsp;</strong> 
+  <%= number_to_phone(@family.phone) %><br /><br />
+
+
+<strong>Email:&nbsp;&nbsp;</strong> 
+  <%= @family.email %><br /><br />	
+
+<strong>Active:&nbsp;&nbsp;</strong>
+	<% if @family.active %>
+		<%= "Yes" %>
+	<% else %>
+		<%= "No" %>
+	<% end %>

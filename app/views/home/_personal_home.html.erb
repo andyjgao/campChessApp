@@ -1,0 +1,17 @@
+<h1>Hello, <%if current_user.role? :parent %> <%= current_user.family.parent_first_name.capitalize %> <% else %> <%= current_user.instructor.first_name %> <% end %></h1>
+<% if current_user.role?(:admin) or current_user.role?(:instructor) %>
+  <div class="row">
+    <div class="small-10 large-centered columns text-center">
+      <%= render :partial => 'admin_cards' %>
+
+
+        <%= render :partial => 'admin_chart' %>
+
+
+    </div>
+  </div>
+
+<% else %>
+<%= render :partial => 'students' %>
+
+<% end %>

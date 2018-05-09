@@ -1,0 +1,7 @@
+<%= f.input :family_name, label_html: { class: 'active' } %>
+<%= f.input :parent_first_name, label_html: { class: 'active' } %>
+<% if !logged_in? %>
+    <%= f.input :active, as: :hidden, input_html: { value: true } %>
+
+<% end %>
+

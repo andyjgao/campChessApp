@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col s2">
+  </div>
+
+  <div class="col s10">
+
+    <h4 class="heading"> Shopping Cart </h4>
+
+    <% if session[:cart].size == 0 %>
+
+      <p class="text"> Your cart is empty </p>
+
+    <% else %>
+
+      <% for reg in session[:cart]%>
+
+      <div class="card horizontal">
+      <div class="card-image">
+        <%= image_tag('img_not_available.png', border:0)%>
+      </div>
+
+      <div class="card-stacked">
+        <div class="card-content">
+          <h5 class="heading">
+            <div class="link text big">
+
+              <%= link_to reg['camp_name'], camp_path(reg["ids"][0]) %>
+            </div>
+          </h5>
+
+          <h5 class="heading">
+            <%= number_to_currency(reg["cost"]) %>
+          </h5>
+
+          <p class="text">
+            <strong>Start date: </strong><%= reg["date"] %>
+
+
+          </p>
+        </div> <!-- Close card-content -->
+
+      <div class="card-action">
+        <%= link_to "Remove from Cart", remove_from_cart_path(reg) %>
+      </div>
+
+    </div> <!-- Close card-stacked -->
+
+    </div> <!-- Close card horizontal -->
+
+    <br/>
+    <%@total_cost = @total_cost + reg["cost"] %>
+    <% end%>
+
+    <% end %>
+
+    <p class="text right">
+
+      Grand total: <%= number_to_currency(@total_cost)%>
+
+      <br/>
+
+      <br/>
+
+
+
+       <button class="waves-effect waves-light btn acc">
+         <%= link_to "Proceed to Checkout", pay_path %>
+      </button>
+    </p>
+
+
+
+
+
+
+  </div>
+</div>

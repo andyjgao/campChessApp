@@ -1,0 +1,196 @@
+// label{
+//   color: #4bdbec;
+// }
+//
+// main {
+//   flex: 1 0 auto;
+// }
+//
+// #background {
+//     flex: 1 0 auto;
+//     width: 100%;
+//     height: 110%;
+//     position: fixed;
+//     left: 0px;
+//     top: 0px;
+//     z-index: -1; /* Ensure div tag stays behind content; -999 might work, too. */
+// }
+//
+// .stretch {
+//     width:100%;
+//     height:100%;
+// }
+//
+// .container {
+//     width: 85%;
+//     top: 10px;
+// }
+//
+// .container .row {
+//     margin-left: 0;
+//     margin-right: 0;
+// }
+// /*
+// html{
+//   color: rgba(255, 255, 255, 0.87)
+// }
+// */
+//
+//
+// nav {
+//   background-color: #d4494191;
+//   position: fixed; /* Set the navbar to fixed position */
+//   top: 0;
+//   z-index:2;
+// }
+//
+// .slider.fullscreen{
+//   z-index:0;
+// }
+//
+// .waves-effect {
+//   z-index:2;
+// }
+// .waves-effect waves-light btn acc{
+//   z-index:2;
+// }
+//
+// .page-footer {
+//   background-color: #c35c44bd;
+// }
+// /********** FORMS ********/
+// .switch label input[type=checkbox]:checked + .lever {
+//   background-color: #2979ff;
+// }
+//
+// .switch label input[type=checkbox]:checked + .lever::after {
+//   background-color: #303F9F;
+// }
+//
+// /********** CARDS ********/
+// .card a {
+//   color: #e0f7fa;
+//   width:400px;
+//   margin: 0.5rem 0 1rem 0;
+// }
+//
+//
+//
+// .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+//   color: #e0f7fa;
+// }
+//
+// .card .card-action {
+//     position: relative;
+//     background-color: rgba(255, 255, 255, 0);
+//     border-top: 1px solid rgba(160, 160, 160, 0.2);
+//     padding: 16px 24px;
+// }
+//
+// .card a {
+//     color: #ea502a;
+//     width: 400px;
+// }
+// .card {
+//   background-color: #ffffff9e;
+//   top: 35px;
+//
+// }
+//
+//
+//
+// .indigo.lighten-2 {
+//   background-color: #ffffff9e;
+// }
+// .card .remove {
+//   color: #b71c1c;
+// }
+//
+// li.no_bullet {
+//   list-style-type: none;
+// }
+//
+// /********** BUTTONS ********/
+// .btn-alert {
+//   background-color: #c62828;
+//   color: #fff;
+// }
+// .btn-alert:hover {
+//   background-color: #e53935;
+//   color: #fff;
+// }
+//
+//
+// .material-icons{
+//     display: inline-flex;
+//     vertical-align: top;
+//     font-size: 20px
+// }
+//
+// #index_name{
+//
+//  line-height:15px;
+// }
+
+
+/********** FORMS ********/
+.switch label input[type=checkbox]:checked + .lever {
+  background-color: #2979ff;
+}
+
+.switch label input[type=checkbox]:checked + .lever::after {
+  background-color: #303F9F;
+}
+
+/********** CARDS ********/
+.card a {
+  color: #5D737E;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+  color: #5D737E;
+}
+
+.card .remove {
+  color: #b71c1c;
+}
+
+li.no_bullet {
+  list-style-type: none;
+}
+.with-cards{
+  margin-top: 2em;
+}
+
+
+/********** BUTTONS ********/
+.btn-alert {
+  background-color: #c62828;
+  color: #fff;
+}
+.btn-alert:hover {
+  background-color: #e53935;
+  color: #fff;
+}
+
+/*******NAV******/
+nav {
+    color: #fff;
+    background-color: #7EBDC3;
+    width: 100%;
+    height: 56px;
+    z-index: 100;
+    position: fixed;
+    line-height: 56px;
+}
+
+.page-footer {
+    padding-top: 20px;
+    color: #fff;
+    background-color: #7EBDC3;
+}
+
+/*******Images******/
+.img_50px{
+  width:50px;
+}

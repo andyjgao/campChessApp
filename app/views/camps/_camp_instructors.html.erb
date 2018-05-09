@@ -1,0 +1,16 @@
+<div class="card white with-cards">
+  <div class="card-content">
+    <span class="card-title">Camp Instructors</span>
+	  <% if @instructors.empty? %>
+		<p>No instructors at this time</p>
+	  <% else %>
+      <ul>
+        <% @instructors.each do |i| %>
+          <li>
+            <%= i.proper_name %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

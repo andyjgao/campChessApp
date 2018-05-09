@@ -1,0 +1,12 @@
+<h4>Your cart has <%= session[:cart].length %> <%= 'registration'.pluralize(session[:cart].length) %>.</h4>
+<% unless session[:cart].empty? %>
+
+  <%= render :partial => 'partials/cart_tables' %>
+  <!-- div id="order_form">
+    <%# render partial: 'credit_card_form' %>
+  </div> -->
+
+  
+<% else %>
+  <h5><em>Please place at least one item in your cart before checking out.</em></h5>
+<% end %>
